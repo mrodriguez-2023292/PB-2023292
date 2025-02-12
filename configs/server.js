@@ -4,11 +4,11 @@ import express from "express"
 import cors from "cors"
 import helmet from "helmet"
 import morgan from "morgan"
+import { dbConnection } from "./mongo.js"
 import authRoutes from "../src/auth/auth.routes.js"
 import adminRoutes from "../src/admin/admin.routes.js"
 import apiLimiter from "../src/middlewares/rate-limit-validator.js"
 import Admin from "../src/admin/admin.model.js"
-import { dbConnection } from "./mongo.js"
 import { hash } from "argon2"
 
 const middlewares = (app) => {
@@ -19,7 +19,6 @@ const middlewares = (app) => {
     app.use(morgan("dev"))
     app.use(apiLimiter)
 }
-
 
 const routes = (app) =>{
     app.use("/storeSystem/v1/auth", authRoutes)
