@@ -52,6 +52,7 @@ const adminSchema = Schema({
         default: true
     }
 },
+
 {
     versionKey: false,
     timeStamps: true
@@ -59,7 +60,7 @@ const adminSchema = Schema({
 
 adminSchema.methods.toJSON = function(){
     const {password, _id, ...admin} = this.toObject()
-    admin.uid = _id
+    admin.aid = _id
     return admin
 }
 

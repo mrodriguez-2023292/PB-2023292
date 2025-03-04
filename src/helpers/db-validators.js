@@ -1,5 +1,6 @@
-import Admin from "../admin/admin.model.js";
-import Client from "../client/client.model.js";
+import Admin from "../admin/admin.model.js"
+import Client from "../client/client.model.js"
+import Category from "../category/category.model.js"
 
 export const emailExistsAdmin = async (email = "") => {
     const exist = await Admin.findOne({email})
@@ -29,17 +30,16 @@ export const usernameExistsClient = async (username = "") => {
     }
 }
 
-export const adminExists = async (uid = " ") => {
-    const exist = await Admin.findById(uid)
+export const adminExists = async (aid = " ") => {
+    const exist = await Admin.findById(aid)
     if(!exist){
         throw new Error("No existe el admin con el ID proporcionado")
     }
 }
 
-export const clientExists = async (uid = "") => {
-    const exist = await Client.findById(uid);
+export const clientExists = async (cid = "") => {
+    const exist = await Client.findById(cid);
     if (!exist) {
-        throw new Error("No existe el cliente con el ID proporcionado");
+        throw new Error("No existe el cliente con el ID proporcionado")
     }
-};
-
+}

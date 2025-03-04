@@ -4,12 +4,13 @@ import express from "express"
 import cors from "cors"
 import helmet from "helmet"
 import morgan from "morgan"
+import { hash } from "argon2"
 import { dbConnection } from "./mongo.js"
 import authRoutes from "../src/auth/auth.routes.js"
 import adminRoutes from "../src/admin/admin.routes.js"
 import apiLimiter from "../src/middlewares/rate-limit-validator.js"
 import Admin from "../src/admin/admin.model.js"
-import { hash } from "argon2"
+import Category from "../src/category/category.model.js"
 
 const middlewares = (app) => {
     app.use(express.urlencoded({extended: false}))
@@ -37,7 +38,8 @@ const conectarDB = async () =>{
 export const initServer = () => {
     const app = express()
     try{
-        createAdminUser();
+        createAdminUser()
+        createDefaultCategory()
         middlewares(app)
         conectarDB()
         routes(app)
@@ -48,32 +50,58 @@ export const initServer = () => {
     }
 }
 
-const createAdminUser = async () => {
+export const createAdminUser = async () => {
     try {
-        const adminExists = await Admin.findOne({ role: "ADMIN_ROLE" });
+        const adminExists = await Admin.findOne({
+            $or: [
+                { email: "admin@example.com" },
+                { role: "ADMIN_ROLE" }
+            ]
+        })
 
         if (adminExists) {
-            console.log("El usuario admin ya existe");
-            return;
+            console.log("El usuario administrador ya existe")
+            return
         }
 
         const adminData = {
-            name: 'Juan',
-            surname: 'Pérez',
-            username: 'juanperez_admin',
-            email: 'juan.perez@admin.com',
-            phone: '12345678',
-            password: 'Dm@n1234',
-            role: 'ADMIN_ROLE',
-        };
+            name: "Admin",
+            surname: "Principal",
+            username: "admin_master",
+            email: "admin@example.com",
+            phone: "12345678",
+            password: "Dm@n1234",
+            role: "ADMIN_ROLE"
+        }
 
-        const encryptedPassword = await hash(adminData.password);
-        adminData.password = encryptedPassword;
+        adminData.password = await hash(adminData.password)
 
-        await Admin.create(adminData);
+        await Admin.create(adminData)
 
-        console.log("Admin ingresado correctamente");
+        console.log("Usuario administrador creado con éxito")
     } catch (err) {
-        console.error("Error al crear el admin:", err.message);
+        console.error("Error al crear el usuario administrador:", err.message)
+    }
+}
+
+export const createDefaultCategory  = async () => {
+    try {
+        const categoryExists = await Category.findOne({ name: "Sin categoría" })
+
+        if (categoryExists) {
+            console.log("La categoría por defecto ya existe")
+            return
+        }
+
+        const categoryData = {
+            name: "Sin categoría",
+            description: "Productos sin categoría asignada"
+        }
+
+        await Category.create(categoryData)
+
+        console.log("La categoria por defecto creada con éxito")
+    } catch (err) {
+        console.error("Error al crear la categoria por defecto:", err.message)
     }
 }

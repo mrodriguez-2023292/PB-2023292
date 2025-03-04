@@ -52,6 +52,7 @@ const clientSchema = Schema({
         default: true
     }
 },
+
 {
     versionKey: false,
     timeStamps: true
@@ -59,7 +60,7 @@ const clientSchema = Schema({
 
 clientSchema.methods.toJSON = function(){
     const {password, _id, ...client} = this.toObject()
-    client.uid = _id
+    client.cid = _id
     return client
 }
 

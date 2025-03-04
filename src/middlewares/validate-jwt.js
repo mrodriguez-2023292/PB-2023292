@@ -15,8 +15,8 @@ export const validateJWTAdmin = async (req, res, next) =>{
 
         token = token.replace(/^Bearer\s+/, "");
 
-        const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY)
-        const admin = await Admin.findById(uid)
+        const { aid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY)
+        const admin = await Admin.findById(aid)
         console.log(admin)
 
         if(!admin){
@@ -57,8 +57,8 @@ export const validateJWTClient = async (req, res, next) =>{
 
         token = token.replace(/^Bearer\s+/, "");
 
-        const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY)
-        const client = await Client.findById(uid)
+        const { cid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY)
+        const client = await Client.findById(cid)
 
         if(!client){
             return res.status(400).json({
