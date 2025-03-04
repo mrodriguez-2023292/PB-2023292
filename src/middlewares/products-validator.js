@@ -1,39 +1,22 @@
-import { body } from "express-validator";
-import { emailExistsAdmin, usernameExistsAdmin, emailExistsClient, usernameExistsClient, adminExists, clientExists } from "../helpers/db-validators.js";
-import { validarCampos } from "./validate-fields.js";
-import { deleteFileOnError } from "./delete-file-on-error.js";
-import { handleErrors } from "./handle-errors.js";
-import { validateJWTAdmin, validateJWTClient } from "./validate-jwt.js";
-import { hasRoles } from "./validate-roles.js";
+import { body } from "express-validator"
+import { productNameExists, categoryExists } from "../helpers/db-validators.js"
+import { validarCampos } from "./validate-fields.js"
+import { deleteFileOnError } from "./delete-file-on-error.js"
+import { handleErrors } from "./handle-errors.js"
+import { hasRoles } from "./validate-roles.js"
+import { validateJWTAdmin } from "./validate-jwt.js"
 
-export const registerValidatorClient = [
-    body("name").notEmpty().withMessage("El nombre es requerido"),
-    body("username").notEmpty().withMessage("El username es requerido"),
-    body("email").notEmpty().withMessage("El email es requerido"),
-    body("email").isEmail().withMessage("No es un email válido"),
-    body("email").custom(emailExistsClient),
-    body("username").custom(usernameExistsClient),
-    body("password").isStrongPassword({
-        minLength: 8,
-        minLowercase:1,
-        minUppercase: 1,
-        minNumbers: 1,
-        minSymbols: 1
-    }),
+export const addProductValidator = [
+    validateJWTAdmin,
+    hasRoles("ADMIN_ROLE"),
+    body("name").custom(productNameExists),
+    body("description").notEmpty().withMessage("La descripción del producto es obligatoria"),
+    body("price").notEmpty().withMessage("El precio del producto es obligatorio")
+        .isNumeric().withMessage("El precio debe ser un número")
+        .isFloat({ min: 0 }).withMessage("El precio no puede ser negativo"),
+    body("stock").notEmpty().withMessage("La cantidad en stock es obligatoria")
+        .isInt({ min: 0 }).withMessage("El stock no puede ser negativo"),
     validarCampos,
     deleteFileOnError,
     handleErrors
-]
-
-export const loginValidator = [
-    body("email").optional().isEmail().withMessage("No es un email válido"),
-    body("username").optional().isString().withMessage("Username es en formáto erróneo"),
-    body("password").isLength({min: 8}).withMessage("El password debe contener al menos 8 caracteres"),
-    validarCampos,
-    handleErrors
-]
-
-export const getUsersValidator = [
-    validateJWTAdmin,
-    hasRoles("ADMIN_ROLE")
 ]

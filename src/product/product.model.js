@@ -27,8 +27,7 @@ const productSchema = Schema({
 
     category: {
         type: Schema.Types.ObjectId,
-        ref: "Category",
-        required: [true, "La categoría es obligatoria"]
+        ref: "Category"
     },
 
     image: {

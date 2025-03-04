@@ -6,9 +6,11 @@ import helmet from "helmet"
 import morgan from "morgan"
 import { hash } from "argon2"
 import { dbConnection } from "./mongo.js"
+import apiLimiter from "../src/middlewares/rate-limit-validator.js"
 import authRoutes from "../src/auth/auth.routes.js"
 import adminRoutes from "../src/admin/admin.routes.js"
-import apiLimiter from "../src/middlewares/rate-limit-validator.js"
+import categoryRoutes from "../src/category/category.routes.js"
+import productRoutes from "../src/product/product.routes.js"
 import Admin from "../src/admin/admin.model.js"
 import Category from "../src/category/category.model.js"
 
@@ -24,6 +26,8 @@ const middlewares = (app) => {
 const routes = (app) =>{
     app.use("/storeSystem/v1/auth", authRoutes)
     app.use("/storeSystem/v1/admin", adminRoutes)
+    app.use("/storeSystem/v1/category", categoryRoutes)
+    app.use("/storeSystem/v1/product", productRoutes)
 }
 
 const conectarDB = async () =>{

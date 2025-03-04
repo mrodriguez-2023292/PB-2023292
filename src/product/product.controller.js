@@ -5,7 +5,7 @@ import Category from "../category/category.model.js"
 
 export const addProduct = async (req, res) => {
     try{
-        const { category, ...productData } = req.body
+        let { category, ...productData } = req.body
 
         const categoryExists = await Category.findById(category)
 
@@ -23,6 +23,12 @@ export const addProduct = async (req, res) => {
              ...productData, 
              category 
         })
+
+        await Category.findByIdAndUpdate(
+            category,
+            { $push: { products: { product: product._id, name: product.name, price: product.price, stock: product.stock } } },
+            { new: true }
+        )
 
         res.status(201).json({
             success: true,
