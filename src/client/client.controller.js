@@ -3,7 +3,8 @@
 import Client from "./client.model.js"
 import Product from "../product/product.model.js"
 import Category from "../category/category.model.js"
-import Invoice from "../invoice/invoice.model.js" // Ajusta la ruta según la ubicación de tu modelo Invoice
+import Invoice from "../invoice/invoice.model.js"
+import { hash, verify } from 'argon2'
 
 export const getProducts = async (req, res) => {
     const { limite = 10, desde = 0, nombre, categoria, ordenarPor = 'sales', orden = 'desc' } = req.query
@@ -86,6 +87,101 @@ export const getPurchaseHistory = async (req, res) => {
         res.status(500).json({
             success: false,
             message: "Error al obtener el historial de compras",
+            error: error.message
+        })
+    }
+}
+
+export const editProfile = async (req, res) => {
+    try {
+        const { _id: clientId } = req.client
+        const { name, surname, email, phone, username } = req.body
+
+        const client = await Client.findById(clientId)
+
+        if (!client) {
+            return res.status(404).json({
+                success: false,
+                message: "Cliente no encontrado"
+            })
+        }
+
+        if (email && email !== client.email) {
+            const existingClient = await Client.findOne({ email })
+            if (existingClient) {
+                return res.status(400).json({
+                    success: false,
+                    message: "El correo electrónico ya está registrado"
+                })
+            }
+        }
+
+        if (username && username !== client.username) {
+            const existingUsername = await Client.findOne({ username })
+            if (existingUsername) {
+                return res.status(400).json({
+                    success: false,
+                    message: "El nombre de usuario ya está registrado"
+                })
+            }
+        }
+
+        if (name) client.name = name
+        if (surname) client.surname = surname
+        if (email) client.email = email
+        if (phone) client.phone = phone
+        if (username) client.username = username
+
+        const updatedClient = await client.save()
+
+        res.status(200).json({
+            success: true,
+            message: "Perfil actualizado correctamente",
+            client: updatedClient
+        })
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Error al actualizar el perfil",
+            error: error.message
+        })
+    }
+}
+
+export const deleteAccount = async (req, res) => {
+    try {
+        const { _id: clientId } = req.client
+        const { password } = req.body
+
+        const client = await Client.findById(clientId)
+
+        if (!client) {
+            return res.status(404).json({
+                success: false,
+                message: "Cliente no encontrado"
+            })
+        }
+
+        // Verificación de la contraseña con argon2
+        const passwordMatch = await verify(client.password, password)
+
+        if (!passwordMatch) {
+            return res.status(400).json({
+                success: false,
+                message: "La contraseña no es correcta"
+            })
+        }
+
+        await Client.findByIdAndUpdate(clientId, { status: false})
+
+        res.status(200).json({
+            success: true,
+            message: "Cuenta eliminada correctamente"
+        })
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Error al eliminar la cuenta",
             error: error.message
         })
     }

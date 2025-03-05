@@ -1,0 +1,40 @@
+[{
+  "_id": {
+    "$oid": "67c78907cfe80883ae94048c"
+  },
+  "name": "Lavadora LG TurboWash",
+  "description": "Lavadora de alta eficiencia con tecnología TurboWash que permite un lavado rápido y efectivo. Cuenta con 12 programas de lavado, pantalla digital y capacidad de 10 kg.",
+  "price": 499.99,
+  "stock": 13,
+  "category": {
+    "$oid": "67c78451ee5f3e439ed968cd"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2025-03-04T23:13:11.668Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-05T22:14:32.370Z"
+  },
+  "sales": 12
+},
+{
+  "_id": {
+    "$oid": "67c8af809f118741bc355f66"
+  },
+  "name": "Kit de Herramientas para Plomería",
+  "description": "Juego completo de herramientas para plomería, incluye llaves, destornilladores, y selladores para reparaciones y mantenimiento de sistemas hidráulicos.",
+  "price": 45.99,
+  "stock": 8,
+  "sales": 12,
+  "category": {
+    "$oid": "67c8af739f118741bc355f61"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2025-03-05T20:09:36.641Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-05T22:14:32.373Z"
+  }
+}]

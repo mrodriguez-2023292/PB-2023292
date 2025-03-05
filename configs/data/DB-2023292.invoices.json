@@ -1,0 +1,111 @@
+[{
+  "_id": {
+    "$oid": "67c8b0659f118741bc355f7b"
+  },
+  "client": {
+    "$oid": "67c8aec39f118741bc355f50"
+  },
+  "products": [
+    {
+      "name": "Lavadora LG TurboWash",
+      "quantity": 3,
+      "price": 200,
+      "totalPrice": 600,
+      "_id": {
+        "$oid": "67c8ccc80d6a3afc9a7248d6"
+      }
+    },
+    {
+      "name": "Kit de Herramientas para Plomería",
+      "quantity": 2,
+      "price": 300,
+      "totalPrice": 600,
+      "_id": {
+        "$oid": "67c8ccc80d6a3afc9a7248d7"
+      }
+    }
+  ],
+  "totalAmount": 1200,
+  "date": {
+    "$date": "2025-03-05T22:14:32.363Z"
+  },
+  "createdAt": {
+    "$date": "2025-03-05T20:13:25.214Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-05T22:14:32.364Z"
+  },
+  "isCF": false,
+  "nit": "123456789"
+},
+{
+  "_id": {
+    "$oid": "67c8c0e4abd2323db2c5f4d8"
+  },
+  "client": {
+    "$oid": "67c8aec39f118741bc355f50"
+  },
+  "products": [
+    {
+      "name": "Kit de Herramientas para Plomería",
+      "quantity": 2,
+      "price": 45.99,
+      "totalPrice": 91.98,
+      "_id": {
+        "$oid": "67c8c0e4abd2323db2c5f4d9"
+      }
+    }
+  ],
+  "totalAmount": 91.98,
+  "date": {
+    "$date": "2025-03-05T21:23:48.012Z"
+  },
+  "isCF": false,
+  "nit": "1234567890",
+  "createdAt": {
+    "$date": "2025-03-05T21:23:48.029Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-05T21:23:48.029Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67c8c2d4f8f66ea92a9f21cc"
+  },
+  "client": {
+    "$oid": "67c8aec39f118741bc355f50"
+  },
+  "products": [
+    {
+      "name": "Kit de Herramientas para Plomería",
+      "quantity": 2,
+      "price": 45.99,
+      "totalPrice": 91.98,
+      "_id": {
+        "$oid": "67c8c2d4f8f66ea92a9f21cd"
+      }
+    },
+    {
+      "name": "Kit de Herramientas para Plomería",
+      "quantity": 2,
+      "price": 45.99,
+      "totalPrice": 91.98,
+      "_id": {
+        "$oid": "67c8c2d4f8f66ea92a9f21ce"
+      }
+    }
+  ],
+  "totalAmount": 183.96,
+  "date": {
+    "$date": "2025-03-05T21:32:04.850Z"
+  },
+  "isCF": false,
+  "nit": "1234567890",
+  "createdAt": {
+    "$date": "2025-03-05T21:32:04.865Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-05T21:32:04.865Z"
+  }
+}]

@@ -63,6 +63,24 @@ export const getClientValidator = [
     validateJWTClient
 ]
 
+export const editProfileValidator = [
+    validateJWTClient,
+    body("name").notEmpty().withMessage("El nombre es requerido"),
+    body("username").notEmpty().withMessage("El username es requerido"),
+    body("email").notEmpty().withMessage("El email es requerido"),
+    body("email").isEmail().withMessage("No es un email válido"),
+    body("password").isStrongPassword({
+        minLength: 8,
+        minLowercase:1,
+        minUppercase: 1,
+        minNumbers: 1,
+        minSymbols: 1
+    }),
+    validarCampos,
+    deleteFileOnError,
+    handleErrors
+]
+
 export const editRoleUserValidator = [
     validateJWTAdmin,
     hasRoles("ADMIN_ROLE"),
