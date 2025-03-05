@@ -1,10 +1,10 @@
-import { body } from "express-validator";
-import { emailExistsAdmin, usernameExistsAdmin, emailExistsClient, usernameExistsClient, adminExists, clientExists } from "../helpers/db-validators.js";
-import { validarCampos } from "./validate-fields.js";
-import { deleteFileOnError } from "./delete-file-on-error.js";
-import { handleErrors } from "./handle-errors.js";
-import { validateJWTAdmin, validateJWTClient } from "./validate-jwt.js";
-import { hasRoles } from "./validate-roles.js";
+import { body } from "express-validator"
+import { emailExistsClient, usernameExistsClient } from "../helpers/db-validators.js"
+import { validarCampos } from "./validate-fields.js"
+import { deleteFileOnError } from "./delete-file-on-error.js"
+import { handleErrors } from "./handle-errors.js"
+import { validateJWTAdmin, validateJWTClient } from "./validate-jwt.js"
+import { hasRoles } from "./validate-roles.js"
 
 export const registerValidatorClient = [
     body("name").notEmpty().withMessage("El nombre es requerido"),
@@ -36,4 +36,4 @@ export const loginValidator = [
 export const getUsersValidator = [
     validateJWTAdmin,
     hasRoles("ADMIN_ROLE")
-];
+]
