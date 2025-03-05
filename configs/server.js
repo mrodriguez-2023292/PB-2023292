@@ -13,6 +13,7 @@ import clientRoutes from "../src/client/client.routes.js"
 import categoryRoutes from "../src/category/category.routes.js"
 import productRoutes from "../src/product/product.routes.js"
 import shoppingCartRoutes from "../src/shoppingCart/shoppingCart.routes.js"
+import invoiceRoutes from "../src/invoice/invoice.routes.js"
 import Admin from "../src/admin/admin.model.js"
 import Category from "../src/category/category.model.js"
 
@@ -32,6 +33,7 @@ const routes = (app) =>{
     app.use("/storeSystem/v1/category", categoryRoutes)
     app.use("/storeSystem/v1/product", productRoutes)
     app.use("/storeSystem/v1/shoppingCart", shoppingCartRoutes)
+    app.use("/storeSystem/v1/invoice", invoiceRoutes)
 }
 
 const conectarDB = async () =>{

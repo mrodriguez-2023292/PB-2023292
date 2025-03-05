@@ -3,7 +3,7 @@ import { deleteFileOnError } from "./delete-file-on-error.js"
 import { handleErrors } from "./handle-errors.js"
 import { validateJWTClient } from "./validate-jwt.js"
 
-export const addCartValidator = [
+export const InvoiceValidator = [
     validateJWTClient,
     validarCampos,
     deleteFileOnError,

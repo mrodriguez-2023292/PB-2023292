@@ -1,7 +1,6 @@
 "use strict"
 
 import shoppingCart from "./shoppingCart.model.js"
-import Client from "../client/client.model.js"
 import Product from "../product/product.model.js"
 
 export const addCart = async (req, res) => {
