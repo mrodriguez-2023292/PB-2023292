@@ -5,7 +5,7 @@ import { generateJWT } from "../helpers/generate-jwt.js"
 
 export const registerClient = async (req, res) => {
     try {
-        const data = { ...req.body, profilePicture: req.file?.filename || null }
+        const data = { ...req.body }
         data.password = await hash(data.password)
 
         const client = await Client.create(data)

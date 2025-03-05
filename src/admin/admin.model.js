@@ -36,10 +36,6 @@ const adminSchema = Schema({
         type: String,
         required: [true, "Password is required"]
     },
-
-    profilePicture:{
-        type: String
-    },
     
     role:{
         type: String,
