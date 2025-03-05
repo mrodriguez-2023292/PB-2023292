@@ -59,6 +59,7 @@ export const validateJWTClient = async (req, res, next) =>{
 
         const { cid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY)
         const client = await Client.findById(cid)
+        console.log(client)
 
         if(!client){
             return res.status(400).json({

@@ -1,7 +1,7 @@
 import { hash, verify } from "argon2"
 import Client from "../client/client.model.js"
 import Admin from "../admin/admin.model.js"
-import { generateJWT } from "../helpers/generate-jwt.js"
+import { generateJWTA, generateJWTC } from "../helpers/generate-jwt.js"
 
 export const registerClient = async (req, res) => {
     try {
@@ -37,13 +37,16 @@ const loginUser = async (Model, req, res) => {
             })
         }
 
-        const token = await generateJWT(user.id)
-
+        let token
+        if(Model === Admin){
+            token = await generateJWTA(user.id)
+        }else if(Model === Client){
+            token = await generateJWTC(user.id)
+        }
         return res.status(200).json({
             message: "Inicio de sesión exitoso",
             userData: {
-                token,
-                profilePicture: user.profilePicture ?? undefined
+                token
             }
         })
     } catch (err) {

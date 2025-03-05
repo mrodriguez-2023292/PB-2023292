@@ -2,6 +2,7 @@ import Admin from "../admin/admin.model.js"
 import Client from "../client/client.model.js"
 import Category from "../category/category.model.js"
 import Product from "../product/product.model.js"
+import shoppingCart from "../shoppingCart/shoppingCart.model.js"
 
 export const emailExistsAdmin = async (email = "") => {
     const exist = await Admin.findOne({email})
@@ -70,6 +71,13 @@ export const productExists = async (id = "") => {
     const exist = await Product.findById(id)
     if(!exist){
         throw new Error("No existe el cliente con el ID proporcionado")
+    }
+}
+
+export const shoppingCartExists = async (id = "") => {
+    const exist = await shoppingCart.findById(id)
+    if(!exist){
+        throw new Error("No existe el carrito de compra con el ID proporcionado")
     }
 }
 
