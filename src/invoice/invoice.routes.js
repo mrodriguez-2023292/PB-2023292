@@ -1,19 +1,25 @@
 import { Router } from "express"
-import { generateInvoice, getInvoicesByClient } from "./invoice.controller.js"
-import { InvoiceValidator } from "../middlewares/invoices-validator.js"
+import { generateInvoice, getInvoicesByClient, editInvoice } from "./invoice.controller.js"
+import { invoiceAdminValidator, invoiceValidator } from "../middlewares/invoices-validator.js"
 
 const router = Router()
 
 router.post(
     "/generateInvoice/:id",
-    InvoiceValidator,
+    invoiceValidator,
     generateInvoice
 )
 
 router.get(
-    "/seeInvoice",
-    InvoiceValidator,
+    "/seeInvoice/:cid",
+    invoiceAdminValidator,
     getInvoicesByClient
+)
+
+router.put(
+    "/editInvoice/:invoiceId",
+    invoiceAdminValidator,
+    editInvoice
 )
 
 export default router
