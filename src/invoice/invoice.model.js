@@ -24,6 +24,16 @@ const invoiceSchema = new Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+
+    isCF: {
+        type: Boolean,
+        default: true
+    },
+
+    nit: {
+        type: String,
+        required: function() { return !this.isCF }
     }
 
 }, 
