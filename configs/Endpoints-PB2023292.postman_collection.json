@@ -1,0 +1,583 @@
+{
+	"info": {
+		"_postman_id": "fd570864-3222-401d-98a5-37aacaa8db4e",
+		"name": "Endpoints-PB2023292",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "41830113"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register client",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Luis\",\r\n    \"surname\": \"Perez\",\r\n    \"username\": \"luisperez\",\r\n    \"email\": \"luis.perez@example.com\",\r\n    \"phone\": \"56473829\",\r\n    \"password\": \"Lui$7890\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/storeSystem/v1/auth/registerClient"
+					},
+					"response": []
+				},
+				{
+					"name": "Login client",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"luisperez\",\r\n    \"password\": \"Lui$7890\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/storeSystem/v1/auth/loginClient"
+					},
+					"response": []
+				},
+				{
+					"name": "Login admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin_master\",\r\n    \"password\": \"Dm@n1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/storeSystem/v1/auth/loginAdmin"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admins",
+			"item": [
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "Agregar producto",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhaWQiOiI2N2M3ZDY2MGU1ZTE3MGJmYWVmZmU3ODQiLCJpYXQiOjE3NDExNjMyODAsImV4cCI6MTc0MTE2Njg4MH0.Bn0-SMJEq8yN8htPVWy1GxzR8JYI4feCEcDUsXvYmnA"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Kit de Herramientas para Plomería\",\r\n  \"description\": \"Juego completo de herramientas para plomería, incluye llaves, destornilladores, y selladores para reparaciones y mantenimiento de sistemas hidráulicos.\",\r\n  \"price\": 45.99,\r\n  \"stock\": 20,\r\n  \"category\": \"67c80ee873d50203c18271c5\" \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:3000/storeSystem/v1/product/addProduct"
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar producto",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhaWQiOiI2N2M3ZDY2MGU1ZTE3MGJmYWVmZmU3ODQiLCJpYXQiOjE3NDExNDk4MTYsImV4cCI6MTc0MTE1MzQxNn0.zGRUzWIlFYnyBQ6eEb2tu_bZ22zj65mfpVEX5WzgD8M"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:3000/storeSystem/v1/product/getProductById/67c7d6b0e5e170bfaeffe7af"
+							},
+							"response": []
+						},
+						{
+							"name": "Listar productos",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhaWQiOiI2N2M3ZDY2MGU1ZTE3MGJmYWVmZmU3ODQiLCJpYXQiOjE3NDExNTUzODMsImV4cCI6MTc0MTE1ODk4M30.nukezL79V_7IzLbFU95tSfjdYBshk3sEx2iRZ-L8ick"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:3000/storeSystem/v1/product/getProducts"
+							},
+							"response": []
+						},
+						{
+							"name": "Editar producto",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhaWQiOiI2N2M3ZDY2MGU1ZTE3MGJmYWVmZmU3ODQiLCJpYXQiOjE3NDExNDk4MTYsImV4cCI6MTc0MTE1MzQxNn0.zGRUzWIlFYnyBQ6eEb2tu_bZ22zj65mfpVEX5WzgD8M"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Televisor Sony Bravia 55\\\" 4K\",\r\n  \"description\": \"Televisor Sony 4K con tecnología HDR, pantalla de 55 pulgadas y sistema de sonido Dolby Atmos para una experiencia inmersiva.\",\r\n  \"price\": 799.99,\r\n  \"stock\": 15\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:3000/storeSystem/v1/product/editProduct/67c7d6b0e5e170bfaeffe7af"
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar producto",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhaWQiOiI2N2M3ZDY2MGU1ZTE3MGJmYWVmZmU3ODQiLCJpYXQiOjE3NDExNDk4MTYsImV4cCI6MTc0MTE1MzQxNn0.zGRUzWIlFYnyBQ6eEb2tu_bZ22zj65mfpVEX5WzgD8M"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "http://127.0.0.1:3000/storeSystem/v1/product/deleteProduct/67c7d6b0e5e170bfaeffe7af"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Categories",
+					"item": [
+						{
+							"name": "Agregar categoria",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhaWQiOiI2N2M3ZDY2MGU1ZTE3MGJmYWVmZmU3ODQiLCJpYXQiOjE3NDExNjMyODAsImV4cCI6MTc0MTE2Njg4MH0.Bn0-SMJEq8yN8htPVWy1GxzR8JYI4feCEcDUsXvYmnA"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Artículos para el hogar\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:3000/storeSystem/v1/category/addCategory"
+							},
+							"response": []
+						},
+						{
+							"name": "Listar categorias",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhaWQiOiI2N2M3ZDY2MGU1ZTE3MGJmYWVmZmU3ODQiLCJpYXQiOjE3NDExNTUzODMsImV4cCI6MTc0MTE1ODk4M30.nukezL79V_7IzLbFU95tSfjdYBshk3sEx2iRZ-L8ick"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:3000/storeSystem/v1/category/getCategories"
+							},
+							"response": []
+						},
+						{
+							"name": "Editar categoria",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhaWQiOiI2N2M3ZDY2MGU1ZTE3MGJmYWVmZmU3ODQiLCJpYXQiOjE3NDExNTMyMjIsImV4cCI6MTc0MTE1NjgyMn0.AcHfGbFbsax4FAWrmiTsh0q3UBWVa_aThysUu6qmS_M"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Plomeria\",\r\n    \"description\": \"En esta categoria solo se encontraran cosas de plomeria\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:3000/storeSystem/v1/category/editCategory/67c7e3ce594451bcec91a0fa"
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar categoria",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhaWQiOiI2N2M3ZDY2MGU1ZTE3MGJmYWVmZmU3ODQiLCJpYXQiOjE3NDExNjMyODAsImV4cCI6MTc0MTE2Njg4MH0.Bn0-SMJEq8yN8htPVWy1GxzR8JYI4feCEcDUsXvYmnA"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "http://127.0.0.1:3000/storeSystem/v1/category/deleteCategory/67c80ee873d50203c18271c5"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Invoices",
+					"item": [
+						{
+							"name": "Ver factura",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaWQiOiI2N2M4MmVkMDhkODlkNDViNmZmZWNhOTUiLCJpYXQiOjE3NDExODE2MjgsImV4cCI6MTc0MTE4NTIyOH0.VYksY4OYAcq_SAPzeRSwnELGEIQ3VHXbz9IZuG0tG00"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:3000/storeSystem/v1/invoice/seeInvoice"
+							},
+							"response": []
+						},
+						{
+							"name": "Editar factura",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhaWQiOiI2N2M3ODQ1MWVlNWYzZTQzOWVkOTY4ZDAiLCJpYXQiOjE3NDEyMTE5NDAsImV4cCI6MTc0MTIxNTU0MH0.JOGQH4fHnC-aLCNUy4S_7WZ3EdfTQvh8jaeFEWr5Arc"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"products\": [\r\n        {\r\n            \"product\": \"60a755d0f1b6d5cd4f4a3b91\",  // ID del primer producto\r\n            \"quantity\": 3,\r\n            \"price\": 200\r\n        },\r\n        {\r\n            \"product\": \"60a755d0f1b6d5cd4f4a3b92\",  // ID del segundo producto\r\n            \"quantity\": 2,\r\n            \"price\": 300\r\n        }\r\n    ],\r\n    \"isCF\": false,  // Esto indica que no es consumidor final\r\n    \"nit\": \"123456789\"  // NIT del cliente\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:3000/storeSystem/v1/invoice/editInvoice/67c8b0659f118741bc355f7b"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Agregar usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhaWQiOiI2N2M3ZDY2MGU1ZTE3MGJmYWVmZmU3ODQiLCJpYXQiOjE3NDExNjg1NTgsImV4cCI6MTc0MTE3MjE1OH0.BEMXjezG5PPWvvHytjhE0vQdEj2dV9bhLRxiIYjEMcM"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Carlos\",\r\n    \"surname\": \"Gomez\",\r\n    \"username\": \"carlosgomez\",\r\n    \"email\": \"carlos.gomez@example.com\",\r\n    \"phone\": \"12345678\",\r\n    \"password\": \"passWo#d123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/storeSystem/v1/admin/addUser"
+					},
+					"response": []
+				},
+				{
+					"name": "Listar usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhaWQiOiI2N2M3ZDY2MGU1ZTE3MGJmYWVmZmU3ODQiLCJpYXQiOjE3NDExNjg1NTgsImV4cCI6MTc0MTE3MjE1OH0.BEMXjezG5PPWvvHytjhE0vQdEj2dV9bhLRxiIYjEMcM"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:3000/storeSystem/v1/admin/getUsers"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar role de usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhaWQiOiI2N2M3ZDY2MGU1ZTE3MGJmYWVmZmU3ODQiLCJpYXQiOjE3NDExNjY5NDMsImV4cCI6MTc0MTE3MDU0M30.jOqlH35rJeVpXha8CegYcRBwl0WEyQPbW0s0xcjERg0"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\": \"ADMIN_ROLE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/storeSystem/v1/admin/editRoleUser/67c8200bcde5c356f84af0a3"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhaWQiOiI2N2M3ZDY2MGU1ZTE3MGJmYWVmZmU3ODQiLCJpYXQiOjE3NDExNjg1NTgsImV4cCI6MTc0MTE3MjE1OH0.BEMXjezG5PPWvvHytjhE0vQdEj2dV9bhLRxiIYjEMcM"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ana\",\r\n    \"surname\": \"Perez\",\r\n    \"username\": \"anaperez\",\r\n    \"email\": \"ana.perez@example.com\",\r\n    \"phone\": \"87654321\",\r\n    \"password\": \"securePass#456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/storeSystem/v1/admin/editUser/67c8200bcde5c356f84af0a3"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhaWQiOiI2N2M3ZDY2MGU1ZTE3MGJmYWVmZmU3ODQiLCJpYXQiOjE3NDExNjg1NTgsImV4cCI6MTc0MTE3MjE1OH0.BEMXjezG5PPWvvHytjhE0vQdEj2dV9bhLRxiIYjEMcM"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://127.0.0.1:3000/storeSystem/v1/admin/deleteUser/67c8200bcde5c356f84af0a3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Clients",
+			"item": [
+				{
+					"name": "Ver productos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/storeSystem/v1/client/productExploration?nombre=&categoria=",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"storeSystem",
+								"v1",
+								"client",
+								"productExploration"
+							],
+							"query": [
+								{
+									"key": "nombre",
+									"value": ""
+								},
+								{
+									"key": "categoria",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Añadir carrito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaWQiOiI2N2M4YWVjMzlmMTE4NzQxYmMzNTVmNTAiLCJpYXQiOjE3NDEyMDczOTgsImV4cCI6MTc0MTIxMDk5OH0.M7a5WCRgdl8hkYW9PpOEdUxS-tQSWgE2Ll7MUZe-_Yg"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/storeSystem/v1/shoppingCart/addCart"
+					},
+					"response": []
+				},
+				{
+					"name": "Añadir producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaWQiOiI2N2M4YWVjMzlmMTE4NzQxYmMzNTVmNTAiLCJpYXQiOjE3NDEyMDk2NzksImV4cCI6MTc0MTIxMzI3OX0.F6rZB9oy0PyGg4WMRuN5NX28pbkFJM_l_NjrYC9KKBM"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"product\": \"67c8af809f118741bc355f66\",\r\n  \"name\": \"Kit de Herramientas para Plomería\",\r\n  \"price\": 45.99,\r\n  \"quantity\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/storeSystem/v1/shoppingCart/addProduct/67c8b7879e664c8a6056c050"
+					},
+					"response": []
+				},
+				{
+					"name": "Generar factura",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaWQiOiI2N2M4YWVjMzlmMTE4NzQxYmMzNTVmNTAiLCJpYXQiOjE3NDEyMDk2NzksImV4cCI6MTc0MTIxMzI3OX0.F6rZB9oy0PyGg4WMRuN5NX28pbkFJM_l_NjrYC9KKBM"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isCF\": false,\r\n    \"nit\": \"1234567890\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/storeSystem/v1/invoice/generateInvoice/67c8b7879e664c8a6056c050"
+					},
+					"response": []
+				},
+				{
+					"name": "Historial cliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaWQiOiI2N2M4YWVjMzlmMTE4NzQxYmMzNTVmNTAiLCJpYXQiOjE3NDEyMTQxNzgsImV4cCI6MTc0MTIxNzc3OH0.uEPHP0n4khsng2TxsqmiTuQOJZD9qo7v0rvNCzWSSVA"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:3000/storeSystem/v1/client/clientHistory"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar perfil",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaWQiOiI2N2M4YWVjMzlmMTE4NzQxYmMzNTVmNTAiLCJpYXQiOjE3NDEyMTUwNTYsImV4cCI6MTc0MTIxODY1Nn0.3jhPI36dMQPYZTS_Vc8v13fL8zfgwm1jQw1IvgHbRAk"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Carlos\",\r\n    \"surname\": \"Martinez\",\r\n    \"username\": \"carlosm23\",\r\n    \"email\": \"carlos.martinez@example.com\",\r\n    \"phone\": \"12345678\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/storeSystem/v1/client/editProfile"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar cuenta",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaWQiOiI2N2M4ZDkzZjU4NGJlOWM4NTM3ZDhhYjQiLCJpYXQiOjE3NDEyMTYwOTYsImV4cCI6MTc0MTIxOTY5Nn0.YOjmAzN_rca6VBy8MfLUbBEaVsOZXHOOzMhzt6xTD1E"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"Carlo$2025\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/storeSystem/v1/client/deleteAccount"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

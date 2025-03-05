@@ -16,12 +16,27 @@ import shoppingCartRoutes from "../src/shoppingCart/shoppingCart.routes.js"
 import invoiceRoutes from "../src/invoice/invoice.routes.js"
 import Admin from "../src/admin/admin.model.js"
 import Category from "../src/category/category.model.js"
+import { swaggerDocs, swaggerUi } from "./documentation.js"
 
 const middlewares = (app) => {
     app.use(express.urlencoded({extended: false}))
     app.use(express.json())
-    app.use(cors())
-    app.use(helmet())
+    app.use(cors({
+        origin: "*",
+        methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+        allowedHeaders: ["Content-Type", "Authorization"] 
+    }))
+    app.use(helmet({
+        contentSecurityPolicy: {
+            directives: {
+                defaultSrc: ["'self'"],
+                scriptSrc: ["'self'", "'unsafe-inline'", `http://localhost:${process.env.PORT}`],
+                connectSrc: ["'self'", `http://localhost:${process.env.PORT}`],
+                imgSrc: ["'self'", "data:"],
+                styleSrc: ["'self'", "'unsafe-inline'"]
+            },
+        },
+    }))
     app.use(morgan("dev"))
     app.use(apiLimiter)
 }
@@ -34,6 +49,7 @@ const routes = (app) =>{
     app.use("/storeSystem/v1/product", productRoutes)
     app.use("/storeSystem/v1/shoppingCart", shoppingCartRoutes)
     app.use("/storeSystem/v1/invoice", invoiceRoutes)
+    app.use("/storeSystem/v1/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 }
 
 const conectarDB = async () =>{

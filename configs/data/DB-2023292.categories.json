@@ -1,0 +1,156 @@
+[{
+  "_id": {
+    "$oid": "67c78451ee5f3e439ed968cd"
+  },
+  "name": "Sin categoría",
+  "description": "Productos sin categoría asignada",
+  "status": true,
+  "products": [
+    {
+      "product": {
+        "$oid": "67c78907cfe80883ae94048c"
+      },
+      "name": "Lavadora LG TurboWash",
+      "price": 499.99,
+      "stock": 25,
+      "_id": {
+        "$oid": "67c78907cfe80883ae94048e"
+      },
+      "createdAt": {
+        "$date": "2025-03-04T23:13:11.675Z"
+      },
+      "updatedAt": {
+        "$date": "2025-03-04T23:13:11.675Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-03-04T22:53:05.446Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-04T23:13:11.675Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67c8af739f118741bc355f61"
+  },
+  "name": "Artículos para el hogar",
+  "description": "Sin descripción",
+  "status": true,
+  "products": [
+    {
+      "product": {
+        "$oid": "67c8af809f118741bc355f66"
+      },
+      "name": "Kit de Herramientas para Plomería",
+      "price": 45.99,
+      "stock": 20,
+      "_id": {
+        "$oid": "67c8af809f118741bc355f68"
+      },
+      "createdAt": {
+        "$date": "2025-03-05T20:09:36.645Z"
+      },
+      "updatedAt": {
+        "$date": "2025-03-05T20:09:36.645Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-03-05T20:09:23.911Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-05T20:09:36.645Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67c8df1b291892133ada5132"
+  },
+  "name": "Muebles y decoración",
+  "description": "Sin descripción",
+  "status": true,
+  "products": [],
+  "createdAt": {
+    "$date": "2025-03-05T23:32:43.436Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-05T23:32:43.436Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67c8df25291892133ada5136"
+  },
+  "name": "Herramientas y jardinería",
+  "description": "Sin descripción",
+  "status": true,
+  "products": [],
+  "createdAt": {
+    "$date": "2025-03-05T23:32:53.134Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-05T23:32:53.134Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67c8df2a291892133ada513a"
+  },
+  "name": "Ropa de cama y baño",
+  "description": "Sin descripción",
+  "status": true,
+  "products": [],
+  "createdAt": {
+    "$date": "2025-03-05T23:32:58.344Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-05T23:32:58.344Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67c8df30291892133ada513e"
+  },
+  "name": "Cocina y comedor",
+  "description": "Sin descripción",
+  "status": true,
+  "products": [],
+  "createdAt": {
+    "$date": "2025-03-05T23:33:04.055Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-05T23:33:04.055Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67c8df34291892133ada5142"
+  },
+  "name": "Iluminación y accesorios",
+  "description": "Sin descripción",
+  "status": true,
+  "products": [],
+  "createdAt": {
+    "$date": "2025-03-05T23:33:08.966Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-05T23:33:08.966Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67c8df39291892133ada5146"
+  },
+  "name": "Productos de limpieza",
+  "description": "Sin descripción",
+  "status": true,
+  "products": [],
+  "createdAt": {
+    "$date": "2025-03-05T23:33:13.404Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-05T23:33:13.404Z"
+  }
+}]

@@ -1,17 +1,23 @@
 "use strict"
 
+import { hash } from "argon2"
 import Admin from "./admin.model.js"
 import Client from "../client/client.model.js"
 
 export const addUser = async (req, res) => {
     try {
-        const { role, ...userData } = req.body
-        let user
+        const { role, password, ...userData } = req.body
+        let userDataWithHash = { ...userData }
 
-        if(role === "ADMIN_ROLE"){
-            user = await Admin.create(userData)
-        }else{
-            user = await Client.create(userData)
+        if (password) {
+            userDataWithHash.password = await hash(password)
+        }
+
+        let user
+        if (role === "ADMIN_ROLE") {
+            user = await Admin.create(userDataWithHash)
+        } else {
+            user = await Client.create(userDataWithHash)
         }
 
         res.status(201).json({
@@ -66,19 +72,23 @@ export const getUsers = async (req, res) => {
 export const editRoleUser = async (req, res) => {
     try {
         const { userId } = req.params
-        const { role } = req.body
+        const { role, password } = req.body
 
         let user = await Admin.findById(userId)
 
-        if(!user){
+        if (!user) {
             user = await Client.findById(userId)
         }
 
-        if(!user){
+        if (!user) {
             return res.status(404).json({
                 success: false,
                 message: "Usuario no encontrado"
             })
+        }
+
+        if (password) {
+            user.password = await hash(password)
         }
 
         user.role = role
@@ -98,25 +108,30 @@ export const editRoleUser = async (req, res) => {
     }
 }
 
+
 export const editUser = async (req, res) => {
     try {
         const { userId } = req.params
-        const { ...userData } = req.body
+        const { password, ...userData } = req.body
 
         let user = await Admin.findById(userId)
 
-        if(!user){
+        if (!user) {
             user = await Client.findById(userId)
         }
 
-        if(!user){
+        if (!user) {
             return res.status(404).json({
                 success: false,
                 message: "Usuario no encontrado"
             })
         }
 
-        const updatedUser = await (user.constructor === Admin 
+        if (password) {
+            userData.password = await hash(password)
+        }
+
+        const updatedUser = await (user.constructor === Admin
             ? Admin : Client
         ).findByIdAndUpdate(
             userId,
