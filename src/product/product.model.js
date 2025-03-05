@@ -25,13 +25,14 @@ const productSchema = Schema({
         min: [0, "El stock no puede ser negativo"]
     },
 
+    sales: {
+        type: Number,
+        default: 0
+    },
+
     category: {
         type: Schema.Types.ObjectId,
         ref: "Category"
-    },
-
-    image: {
-        type: String
     },
 
     status: {
