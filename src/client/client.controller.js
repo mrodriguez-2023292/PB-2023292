@@ -3,6 +3,7 @@
 import Client from "./client.model.js"
 import Product from "../product/product.model.js"
 import Category from "../category/category.model.js"
+import Invoice from "../invoice/invoice.model.js" // Ajusta la ruta según la ubicación de tu modelo Invoice
 
 export const getProducts = async (req, res) => {
     const { limite = 10, desde = 0, nombre, categoria, ordenarPor = 'sales', orden = 'desc' } = req.query
@@ -60,6 +61,31 @@ export const getProducts = async (req, res) => {
         res.status(500).json({
             success: false,
             message: "Error al obtener los productos",
+            error: error.message
+        })
+    }
+}
+
+export const getPurchaseHistory = async (req, res) => {
+    try {
+        const { _id: clientId } = req.client
+        const invoices = await Invoice.find({ client: clientId })
+
+        if (invoices.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "No se encontraron compras para este cliente"
+            })
+        }
+
+        res.status(200).json({
+            success: true,
+            invoices
+        })
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Error al obtener el historial de compras",
             error: error.message
         })
     }

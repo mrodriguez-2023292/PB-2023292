@@ -59,6 +59,10 @@ export const getUsersValidator = [
     hasRoles("ADMIN_ROLE")
 ]
 
+export const getClientValidator = [
+    validateJWTClient
+]
+
 export const editRoleUserValidator = [
     validateJWTAdmin,
     hasRoles("ADMIN_ROLE"),
